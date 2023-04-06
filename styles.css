@@ -18,6 +18,8 @@
 
     --ff-body: 'Palanquin', sans-serif;
     --ff-heading: 'Staatliches', 'cursive';
+    --ff-bottom:'Open Sans', sans-serif;
+    --ff-paragraph: 'Roboto', sans-serif;
 
     --fs-body: 1.6rem;
     --fs-heading: clamp(3.0rem, 1rem + 2.5vw, 4.0rem); 
@@ -65,12 +67,16 @@ header h1 {
     padding: 0.8rem 0;
 }
 
+header p {
+    display: none;
+}
+
 /* MAIN */
 
 main {
     padding: 1.4rem 3.6rem;
     /* max-width: 38rem; */
-    width: clamp(38rem, 60vw, 70rem);
+    width: clamp(38rem, 80vw, 70rem);
 
     margin: 0 auto;
 }
@@ -89,13 +95,16 @@ main img {
 
 main .cards {
     margin-top: 6.0rem;
-
     display: grid;
     gap: 3.2rem;
 }
 
 .card {
     position: relative;
+}
+
+.cards div:nth-child( n+ 5){
+    display: none;
 }
 
 .card img {
@@ -131,6 +140,10 @@ main .cards {
 }
 
 
+.bottom {
+    display: none;
+}
+
 /* KEYFRAMES */
 
 @keyframes topdown {
@@ -160,7 +173,14 @@ main .cards {
 /* MEDIA QUERIES */
 
 @media (min-width: 700px) { 
+
+    main {
+            padding: 5rem;
+            margin: auto;
+    }
+
     .cards {
+        margin: 0;
         display: grid;
         grid-template-areas: 
             "A B"
@@ -182,5 +202,104 @@ main .cards {
 
     .cards div:nth-child(4) {
         grid-area: D;
+    }
+}
+
+@media (min-width: 1000px) {
+    .page {
+        display: flex;
+    }
+
+    header {
+        max-width: 30%;
+        min-width: 25%;
+        height: 100vh;
+    }
+
+    header img {
+        width: 20rem;
+        height: 20rem;
+        margin-top: 3.2rem;
+    }
+
+    header h1 {
+        padding: 2rem 0;
+        font-size: 4.8rem;
+        line-height: 3.4rem;
+    }
+
+    header p {
+        display: block;
+
+        font-family: var(--ff-paragraph);
+        font-size: 2.4rem;
+        line-height: 3rem;
+        color: var(--fc-heading);
+        text-align: center;
+
+        padding: 5.2rem 5rem;
+    }
+
+    main > p {
+        display: none;
+    }
+
+    .bottom {
+        display: block;
+        margin-top: 5rem;
+        font-family: var(--ff-bottom);
+        font-size: 14px;
+        line-height: 28px;
+        color: #4A4E69;
+    }
+
+    .bottom a {
+        text-decoration: none;
+        font-weight: 700;
+        color: #4A4E69;
+    }
+}
+
+@media (min-width: 1500px) {
+    main {
+        width: 100rem;
+    }
+
+    .cards {
+        display: grid;
+        grid-template-areas: 
+            "A B E"
+            "D B F"
+            "D C F"
+    }
+
+    .card p {
+        display: none;
+    }
+
+    .cards div:nth-child(1) {
+        grid-area: A;
+    }
+
+    .cards div:nth-child(2) {
+        grid-area: B;
+    }
+
+    .cards div:nth-child(3) {
+        grid-area: C;
+    }
+
+    .cards div:nth-child(4) {
+        grid-area: D;
+    }
+
+    .cards div:nth-child(5) {
+        grid-area: E;
+        display: unset;
+    }
+
+    .cards div:nth-child(6) {
+        grid-area: F;
+        display: unset;
     }
 }
